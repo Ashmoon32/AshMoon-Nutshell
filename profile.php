@@ -51,9 +51,21 @@ if ($friend_check->num_rows > 0) {
         <div class="bg-white rounded-lg shadow overflow-hidden mb-4">
             <div class="h-32 bg-gradient-to-r from-blue-400 to-purple-500"></div>
             <div class="px-8 pb-6 relative">
-                <div class="absolute -top-12 left-8 border-4 border-white rounded-full overflow-hidden w-24 h-24 bg-white">
-                    <img src="<?php echo $user_data['avatar']; ?>" class="w-full h-full object-cover">
-                </div>
+                <div class="absolute -top-12 left-8 w-24 h-24 group">
+    <div class="border-4 border-white rounded-full overflow-hidden w-full h-full bg-white relative">
+        <img src="<?php echo $user_data['avatar']; ?>" class="w-full h-full object-cover">
+        
+        <!-- Only show upload button if it's MY profile -->
+        <?php if ($my_id == $view_user_id): ?>
+        <form action="upload_avatar.php" method="POST" enctype="multipart/form-data" class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition cursor-pointer">
+            <label class="cursor-pointer text-white text-xs text-center">
+                <i class="fa-solid fa-camera text-xl mb-1"></i><br>Change
+                <input type="file" name="avatar" class="hidden" onchange="this.form.submit()">
+            </label>
+        </form>
+        <?php endif; ?>
+    </div>
+</div>
                 <div class="pl-32 pt-2 flex justify-between items-end">
                     <div>
                         <h1 class="text-2xl font-bold"><?php echo $user_data['first_name'] . " " . $user_data['last_name']; ?></h1>
@@ -75,6 +87,9 @@ if ($friend_check->num_rows > 0) {
                             <?php endif; ?>
                         </form>
                     <?php endif; ?>
+                    <a href="chat.php?user_id=<?php echo $view_user_id; ?>" class="bg-green-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-green-700 ml-2">
+    <i class="fa-regular fa-comment-dots"></i> Message
+</a>
                 </div>
             </div>
         </div>
