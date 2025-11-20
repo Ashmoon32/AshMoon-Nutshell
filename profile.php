@@ -31,8 +31,30 @@ if ($friend_check->num_rows > 0) {
 <html lang="en">
 <head>
     <title><?php echo $user_data['first_name']; ?>'s Profile</title>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+    tailwind.config = {
+        darkMode: 'class', // This enables manual dark mode toggling
+        theme: {
+            extend: {
+                colors: {
+                    // Facebook Dark Mode Colors
+                    fbDark: '#18191a',
+                    fbCard: '#242526',
+                    fbInput: '#3a3b3c',
+                    fbText: '#e4e6eb',
+                    fbLight: '#f0f2f5'
+                }
+            }
+        }
+    }
+</script>
+<style>
+    /* Smooth theme transition */
+    body, div, nav, input, textarea { transition: background-color 0.3s, color 0.3s; }
+</style>
 </head>
 <body class="bg-[#f0f2f5]">
 
@@ -41,6 +63,48 @@ if ($friend_check->num_rows > 0) {
         <a href="index.php" class="text-blue-600 text-2xl font-bold">SocialMini</a>
         <div class="flex items-center gap-4">
             <a href="index.php" class="text-gray-600 hover:bg-gray-100 p-2 rounded-full"><i class="fa-solid fa-house"></i></a>
+            <!-- <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-xl">
+            <i class="fa-solid fa-moon dark:hidden"></i>
+            <i class="fa-solid fa-sun hidden dark:block text-white"></i>
+            </button> -->
+            <?php
+// Fetch Unread Notifications
+$notif_q = $conn->query("SELECT COUNT(*) as count FROM notifications WHERE user_to = $my_id AND seen = 0");
+$notif_count = $notif_q->fetch_assoc()['count'];
+?>
+
+<!-- In Navbar HTML -->
+<div class="relative group cursor-pointer mr-4">
+    <i class="fa-solid fa-bell text-xl text-gray-600 dark:text-gray-300"></i>
+    <?php if($notif_count > 0): ?>
+        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center"><?php echo $notif_count; ?></span>
+    <?php endif; ?>
+    
+    <!-- Dropdown -->
+    <div class="absolute right-0 mt-2 w-64 bg-white dark:bg-fbCard shadow-xl rounded-lg hidden group-hover:block overflow-hidden border dark:border-gray-700">
+        <?php
+        $n_sql = "SELECT notifications.*, users.first_name, users.avatar FROM notifications JOIN users ON notifications.user_from = users.id WHERE user_to = $my_id ORDER BY created_at DESC LIMIT 5";
+        $n_res = $conn->query($n_sql);
+        
+        if($n_res->num_rows > 0) {
+            while($notif = $n_res->fetch_assoc()) {
+                $msg = ($notif['type'] == 'like') ? "liked your post." : "commented on your post.";
+                echo '
+                <a href="index.php" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-fbInput flex items-center gap-3">
+                    <img src="'.$notif['avatar'].'" class="w-8 h-8 rounded-full">
+                    <div class="text-sm">
+                        <span class="font-bold">'.$notif['first_name'].'</span> '.$msg.'
+                    </div>
+                </a>';
+            }
+            // Mark as seen when dropdown opens (Simplified logic: usually requires AJAX)
+            $conn->query("UPDATE notifications SET seen=1 WHERE user_to=$my_id");
+        } else {
+            echo '<div class="p-4 text-center text-gray-500 text-sm">No notifications</div>';
+        }
+        ?>
+    </div>
+</div>
             <a href="logout.php" class="text-red-500 text-sm hover:underline">Logout</a>
         </div>
     </nav>
@@ -126,5 +190,7 @@ if ($friend_check->num_rows > 0) {
         ?>
 
     </div>
+
+    <script src="main.js"></script>
 </body>
 </html>

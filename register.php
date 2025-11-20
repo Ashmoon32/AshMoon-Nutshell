@@ -23,9 +23,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Register - SocialMini</title>
+    <title>Register - AshMoon Nutshell</title>
     <!-- CORRECTED SCRIPT TAG -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+     <script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        darkMode: 'class', // This enables manual dark mode toggling
+        theme: {
+            extend: {
+                colors: {
+                    // Facebook Dark Mode Colors
+                    fbDark: '#18191a',
+                    fbCard: '#242526',
+                    fbInput: '#3a3b3c',
+                    fbText: '#e4e6eb',
+                    fbLight: '#f0f2f5'
+                }
+            }
+        }
+    }
+</script>
+<style>
+    /* Smooth theme transition */
+    body, div, nav, input, textarea { transition: background-color 0.3s, color 0.3s; }
+</style>
 </head>
 <body class="bg-gray-100 h-screen flex items-center justify-center">
     <div class="bg-white p-8 rounded-xl shadow-xl w-96">

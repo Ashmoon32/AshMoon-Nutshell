@@ -14,8 +14,30 @@ $partner = $conn->query($user_sql)->fetch_assoc();
 <html lang="en">
 <head>
     <title>Chat with <?php echo $partner['first_name']; ?></title>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+    tailwind.config = {
+        darkMode: 'class', // This enables manual dark mode toggling
+        theme: {
+            extend: {
+                colors: {
+                    // Facebook Dark Mode Colors
+                    fbDark: '#18191a',
+                    fbCard: '#242526',
+                    fbInput: '#3a3b3c',
+                    fbText: '#e4e6eb',
+                    fbLight: '#f0f2f5'
+                }
+            }
+        }
+    }
+</script>
+<style>
+    /* Smooth theme transition */
+    body, div, nav, input, textarea { transition: background-color 0.3s, color 0.3s; }
+</style>
 </head>
 <body class="bg-gray-100 h-screen flex flex-col">
 

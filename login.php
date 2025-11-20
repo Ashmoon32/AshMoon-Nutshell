@@ -30,14 +30,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login - SocialMini</title>
+    <title>Login - AshMoon Nutshell</title>
     <!-- CORRECTED SCRIPT TAG -->
     <script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        darkMode: 'class', // This enables manual dark mode toggling
+        theme: {
+            extend: {
+                colors: {
+                    // Facebook Dark Mode Colors
+                    fbDark: '#18191a',
+                    fbCard: '#242526',
+                    fbInput: '#3a3b3c',
+                    fbText: '#e4e6eb',
+                    fbLight: '#f0f2f5'
+                }
+            }
+        }
+    }
+</script>
+<style>
+    /* Smooth theme transition */
+    body, div, nav, input, textarea { transition: background-color 0.3s, color 0.3s; }
+</style>
 </head>
 <body class="bg-gray-100 h-screen flex items-center justify-center">
 
     <div class="bg-white p-8 rounded-xl shadow-xl w-96">
-        <h1 class="text-blue-600 text-3xl font-bold mb-6 text-center">SocialMini</h1>
+        <h1 class="text-blue-600 text-3xl font-bold mb-6 text-center">AshMoon Nutshell</h1>
         
         <?php if(isset($error)) echo "<p class='text-red-500 text-center mb-4 bg-red-100 p-2 rounded'>$error</p>"; ?>
 
