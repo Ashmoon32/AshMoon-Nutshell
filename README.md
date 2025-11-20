@@ -52,26 +52,6 @@ Database: MySQL / MariaDB.
 
 Environment: XAMPP / LAMP Stack.
 
-📂 Folder Structure
-
-social_app/
-├── includes/
-│   └── db_connect.php       # Database connection & Session start
-├── uploads/                 # Stores user avatars and post images
-├── index.php                # Main News Feed
-├── profile.php              # User Profile & Timeline
-├── chat.php                 # Private Messaging Interface
-├── login.php                # User Authentication
-├── register.php             # Account Creation
-├── post_action.php          # Backend Logic: Creating Posts
-├── like_action.php          # Backend Logic: Likes
-├── comment_action.php       # Backend Logic: Comments
-├── friend_action.php        # Backend Logic: Friend Requests
-├── send_message.php         # API: Sending Chat Messages
-├── get_messages.php         # API: Fetching Chat Messages
-└── README.md                # Project Documentation
-
-
 ⚙️ Installation Guide
 
 Prerequisites
