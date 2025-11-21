@@ -46,6 +46,13 @@ $partner = $conn->query($user_sql)->fetch_assoc();
         <a href="index.php" class="text-gray-500 hover:bg-gray-100 p-2 rounded-full"><i class="fa-solid fa-arrow-left"></i></a>
         <img src="<?php echo $partner['avatar']; ?>" class="w-10 h-10 rounded-full object-cover">
         <h1 class="font-bold text-lg"><?php echo $partner['first_name'] . ' ' . $partner['last_name']; ?></h1>
+        <!-- Add inside <nav> -->
+<form action="search.php" method="GET" class="hidden md:block w-1/3">
+    <div class="relative">
+        <input type="text" name="q" placeholder="Search users..." class="w-full bg-gray-100 dark:bg-fbInput dark:text-white rounded-full px-4 py-2 pl-10 focus:outline-none">
+        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-400"></i>
+    </div>
+</form>
     </div>
 
     <!-- Chat Area -->
