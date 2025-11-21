@@ -60,7 +60,14 @@ if ($friend_check->num_rows > 0) {
 
     <!-- Navbar (Same as index) -->
     <nav class="sticky top-0 z-50 bg-white shadow-sm px-4 py-2 flex justify-between items-center">
-        <a href="index.php" class="text-blue-600 text-2xl font-bold">SocialMini</a>
+        <a href="index.php" class="text-blue-600 text-2xl font-bold">AshMoon Nutshell</a>
+        <!-- Add inside <nav> -->
+<form action="search.php" method="GET" class="hidden md:block w-1/3">
+    <div class="relative">
+        <input type="text" name="q" placeholder="Search users..." class="w-full bg-gray-100 dark:bg-fbInput dark:text-white rounded-full px-4 py-2 pl-10 focus:outline-none">
+        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-400"></i>
+    </div>
+</form>
         <div class="flex items-center gap-4">
             <a href="index.php" class="text-gray-600 hover:bg-gray-100 p-2 rounded-full"><i class="fa-solid fa-house"></i></a>
             <!-- <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-xl">
