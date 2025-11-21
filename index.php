@@ -48,6 +48,13 @@ $my_name = $_SESSION['first_name'];
     <!-- Navbar -->
     <nav class="sticky top-0 z-50 bg-white shadow-sm px-4 py-2 flex justify-between items-center bg-white">
         <h1 class="text-blue-600 text-2xl font-bold">AshMoon Nutshell</h1>
+        <!-- Add inside <nav> -->
+<form action="search.php" method="GET" class="hidden md:block w-1/3">
+    <div class="relative">
+        <input type="text" name="q" placeholder="Search users..." class="w-full bg-gray-100 dark:bg-fbInput dark:text-white rounded-full px-4 py-2 pl-10 focus:outline-none">
+        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-400"></i>
+    </div>
+</form>
         <div class="flex items-center gap-4">
             <a href="profile.php" class="flex items-center gap-2">
             <span class="font-semibold"><?php echo $my_name; ?></span>
