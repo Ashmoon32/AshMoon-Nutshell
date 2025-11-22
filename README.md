@@ -1,4 +1,4 @@
-SocialMini - Social Media Platform
+AshMoon Nutshell - Social Media Platform
 
 A lightweight, full-stack social media application inspired by Facebook. Built with PHP (Native), MySQL, and styled with Tailwind CSS.
 
@@ -37,8 +37,6 @@ Polling Architecture: Simulated real-time updates using AJAX/Fetch API.
 🎨 UI/UX
 
 Responsive Design: Fully mobile-friendly layout.
-
-Theme System: Toggleable Dark Mode & Light Mode (persisted via LocalStorage).
 
 Modern Aesthetics: Clean interface inspired by Facebook's 2024 design language.
 
@@ -116,7 +114,3 @@ Open your browser and visit: http://localhost/social_app/login.php
 🤝 Contributing
 
 Feel free to fork this repository and submit pull requests.
-
-📄 Credits
-
-Created with ❤️ by Gemini Version 3.
